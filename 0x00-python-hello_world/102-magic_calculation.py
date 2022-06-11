@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 def magic_calculation(a, b):
     """
     Perform the computation as the following bytecode:
@@ -9,4 +11,4 @@ def magic_calculation(a, b):
     10 BINARY_ADD
     11 RETURN_VALUE
     """
-    return 98 + a ** 
+    return 98 + a ** b
