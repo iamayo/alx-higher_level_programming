@@ -26,32 +26,32 @@ class Node:
 
 
 class SinglyLinkedList:
-    def __init__(self):
-        self.head = None
-
     def __str__(self):
-        my_str = ""
-        node = self.head
-        while node:
-            my_str += str(node.data)
-            my_str += '\n'
-            node = node.next_node
-        return my_str[:-1]
+        rtn = ""
+        ptr = self.__head
+
+        while ptr is not None:
+            rtn += str(ptr.data)
+            if ptr.next_node is not None:
+                rtn += "\n"
+            ptr = ptr.next_node
+
+        return rtn
+
+    def __init__(self):
+        self.__head = None
 
     def sorted_insert(self, value):
-        new_node = Node(value)
+        ptr = self.__head
 
-        if self.head is None:
-            self.head = new_node
-            return
+        while ptr is not None:
+            if ptr.data > value:
+                break
+            ptr_prev = ptr
+            ptr = ptr.next_node
 
-        if value < self.head.data:
-            new_node.next_node = self.head
-            self.head = new_node
-            return
-
-        node = self.head
-        while node.next_node and node.next_node.data < value:
-            node = node.next_node
-        new_node.next_node = node.next_node
-        node.next_node = new_node
+        newNode = Node(value, ptr)
+        if ptr == self.__head:
+            self.__head = newNode
+        else:
+            ptr_prev.next_node = newNode
