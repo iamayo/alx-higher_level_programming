@@ -1,12 +1,15 @@
 #!/usr/bin/python3
+""" Creates an empty class called Square """
+
+
 class Square:
-    """Represents a square.
+    """ Represents a square.
     Private instance attribute: size.
     Instantiation with optional size.
     """
 
     def __init__(self, size=0):
-        """Initializes the data."""
+        """ Initializes the data. """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
